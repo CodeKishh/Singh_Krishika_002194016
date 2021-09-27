@@ -765,7 +765,7 @@ String PATTERN = "^^[0-9]{0,6}$";
         Matcher match = pat.matcher(dob.getText());
         if(!match.matches())
         {
-            errDob.setText("DATE FORMAT should be MM/DD/YYYY");
+            errDob.setText("FORMAT:MM/DD/YYYY");
         }
         else{
             errDob.setText(null);}
