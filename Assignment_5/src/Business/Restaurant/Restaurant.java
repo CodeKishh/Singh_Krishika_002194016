@@ -106,6 +106,13 @@ public class Restaurant {
        
    }
    
+   public Restaurant(String resName) {
+        this.restaurantName=resName;
+        foodMenu =new ArrayList<FoodItems>();
+        orderList=new ArrayList<Order>();
+    }
+    
+   
    @Override
    public String toString(){
    return restaurantName;
