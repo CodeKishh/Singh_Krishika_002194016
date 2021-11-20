@@ -4,6 +4,8 @@
  */
 package userinterface;
 
+
+import Business.ConfigureASystem;
 import Business.EcoSystem;
 import Business.DB4OUtil.DB4OUtil;
 
@@ -23,15 +25,21 @@ public class MainJFrame extends javax.swing.JFrame {
     /**
      * Creates new form MainJFrame
      */
-    private EcoSystem system;
-    JPanel userProcessContainer;
+    private EcoSystem system  ;
+    
+//    config.configure();
+  
+    
+    
     private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
 
     public MainJFrame() {
         initComponents();
         
-        system = dB4OUtil.retrieveSystem();
-    
+        
+//       system = dB4OUtil.retrieveSystem();
+system = ConfigureASystem.configure();
+//        System.out.println(system);  
         this.setSize(1680, 1050);
     }
 
@@ -127,31 +135,44 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void loginJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginJButtonActionPerformed
         // Get user name
-       String uname = userNameJTextField.getText();
-       String psd = passwordField.getText();
-       
-       
-       
-       if(uname.equals("sysadmin") && psd.equals("sysadmin")){
-       
-       
-       JOptionPane.showMessageDialog(this, "Welcome System Admin");
-       userNameJTextField.setText("");
-       passwordField.setText("");
-           
-      
-       SystemAdminWorkAreaJPanel sysjPanel = new SystemAdminWorkAreaJPanel(userProcessContainer,system);
-       jSplitPane1.setRightComponent(sysjPanel);
-       }
-       
-      
-       
-       
-       else{
-           
-           JOptionPane.showMessageDialog(this, "incorrect username or password");
-       
-       }
+//       String ua = userNameJTextField.getText();
+//       String psd = passwordField.getText();
+//       
+//       
+//       
+//       if(ua.equals("sysadmin") && psd.equals("sysadmin")){
+//       
+//       
+//       JOptionPane.showMessageDialog(this, "Welcome System Admin");
+//       userNameJTextField.setText("");
+//       passwordField.setText("");
+//       
+//       CardLayout layout = (CardLayout) container.getLayout();
+//        //container.add(new  SystemAdminWorkAreaJPanel(container, system));
+//        
+//        layout.next(container);
+//        logoutJButton.setEnabled(true);
+//           
+//      
+//       SystemAdminWorkAreaJPanel sysjPanel = new SystemAdminWorkAreaJPanel(container,system);
+//       jSplitPane1.setRightComponent(sysjPanel);
+//       }
+//       
+//       
+//       else{
+//           
+//           JOptionPane.showMessageDialog(this, "incorrect username or password");
+//       
+//       }
+
+
+UserAccount ua = system.getUserAccountDirectory().authenticateUser(userNameJTextField.getText(), passwordField.getText());        
+//        System.out.println(ua.getUsername());        
+        CardLayout layout = (CardLayout) container.getLayout();
+        //container.add(new  SystemAdminWorkAreaJPanel(container, system));
+        container.add(ua.getRole().createWorkArea(container, ua, system));
+        layout.next(container);
+        logoutJButton.setEnabled(true);
     }//GEN-LAST:event_loginJButtonActionPerformed
 
     private void logoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButtonActionPerformed

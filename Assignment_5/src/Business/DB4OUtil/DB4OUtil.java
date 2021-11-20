@@ -35,17 +35,17 @@ public class DB4OUtil {
     private ObjectContainer createConnection() {
         try {
 
-            EmbeddedConfiguration config = Db4oEmbedded.newConfiguration();
-            config.common().add(new TransparentPersistenceSupport());
-            //Controls the number of objects in memory
-            config.common().activationDepth(Integer.MAX_VALUE);
-            //Controls the depth/level of updation of Object
-            config.common().updateDepth(Integer.MAX_VALUE);
+//            EmbeddedConfiguration config = Db4oEmbedded.newConfiguration();
+//            config.common().add(new TransparentPersistenceSupport());
+//            //Controls the number of objects in memory
+//            config.common().activationDepth(Integer.MAX_VALUE);
+//            //Controls the depth/level of updation of Object
+//            config.common().updateDepth(Integer.MAX_VALUE);
+//
+//            //Register your top most Class here
+//            config.common().objectClass(EcoSystem.class).cascadeOnUpdate(true); // Change to the object you want to save
 
-            //Register your top most Class here
-            config.common().objectClass(EcoSystem.class).cascadeOnUpdate(true); // Change to the object you want to save
-
-            ObjectContainer db = Db4oEmbedded.openFile(config, FILENAME);
+            ObjectContainer db = Db4oEmbedded.openFile(FILENAME);
             return db;
         } catch (Exception ex) {
             System.out.print(ex.getMessage());
@@ -64,6 +64,7 @@ public class DB4OUtil {
         ObjectContainer conn = createConnection();
         ObjectSet<EcoSystem> systems = conn.query(EcoSystem.class); // Change to the object you want to save
         EcoSystem system;
+         System.out.println("sys size" +systems.size()); 
         if (systems.size() == 0){
             system = ConfigureASystem.configure();  // If there's no System in the record, create a new one
         }
@@ -71,6 +72,7 @@ public class DB4OUtil {
             system = systems.get(systems.size() - 1);
         }
         conn.close();
+         System.out.println("sys db" +system);
         return system;
     }
 }
