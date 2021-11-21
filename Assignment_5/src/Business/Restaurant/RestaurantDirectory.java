@@ -101,5 +101,6 @@ return restaurantName;
     }
     
 //    public void updateFoodItems()-- update pending
+    // viewRestInfo --pending
     
 }

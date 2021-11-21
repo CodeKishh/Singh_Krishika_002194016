@@ -21,6 +21,12 @@ public class Restaurant {
     
     private ArrayList<Order> orderList = new ArrayList<Order>();
     int resId =1;
+    
+    
+    public void removeItem(FoodItems foodItem){
+    
+    foodMenu.remove(foodItem);
+    }
 
     public String getRestaurantName() {
         return restaurantName;
@@ -111,6 +117,12 @@ public class Restaurant {
         foodMenu =new ArrayList<FoodItems>();
         orderList=new ArrayList<Order>();
     }
+   
+   public void addFood(FoodItems addFood){
+   
+   foodMenu.add(addFood);
+   
+   }
     
    
    @Override

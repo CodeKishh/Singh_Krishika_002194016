@@ -120,7 +120,7 @@ system = ConfigureASystem.configure();
                 .addComponent(logoutJButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(loginJLabel)
-                .addContainerGap(187, Short.MAX_VALUE))
+                .addContainerGap(267, Short.MAX_VALUE))
         );
 
         jSplitPane1.setLeftComponent(jPanel1);
@@ -166,11 +166,11 @@ system = ConfigureASystem.configure();
 //       }
 
 
-UserAccount ua = system.getUserAccountDirectory().authenticateUser(userNameJTextField.getText(), passwordField.getText());        
+UserAccount uac = system.getUserAccountDirectory().authenticateUser(userNameJTextField.getText(), passwordField.getText());        
 //        System.out.println(ua.getUsername());        
         CardLayout layout = (CardLayout) container.getLayout();
         //container.add(new  SystemAdminWorkAreaJPanel(container, system));
-        container.add(ua.getRole().createWorkArea(container, ua, system));
+        container.add(uac.getRole().createWorkArea(container, uac, system));
         layout.next(container);
         logoutJButton.setEnabled(true);
     }//GEN-LAST:event_loginJButtonActionPerformed

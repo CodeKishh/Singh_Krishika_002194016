@@ -88,10 +88,13 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
 
         jSplitPane.setLeftComponent(jPanel1);
 
+        jPanel2.setBackground(new java.awt.Color(255, 153, 153));
+
         jLabel1.setText("Selected Node:");
 
         lblSelectedNode.setText("<View_selected_node>");
 
+        btnView.setBackground(new java.awt.Color(255, 102, 153));
         btnView.setText("Click to view");
         btnView.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -99,9 +102,9 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
-        lblSystemAdmin.setForeground(new java.awt.Color(255, 51, 51));
         lblSystemAdmin.setText("System Admin");
 
+        cBcManageAll.setBackground(new java.awt.Color(153, 255, 153));
         cBcManageAll.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Manage", "Customers", "Restaurants", "Delivery Men" }));
         cBcManageAll.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

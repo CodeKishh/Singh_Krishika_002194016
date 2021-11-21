@@ -49,4 +49,15 @@ public class UserAccountDirectory {
         }
         return true;
     }
+    
+    
+    public void deleteUser(UserAccount ua){
+    
+    userAccountList.remove(ua);
+    
+    }
+    
+    //updateuserAccount -- pending
+    
+    
 }
