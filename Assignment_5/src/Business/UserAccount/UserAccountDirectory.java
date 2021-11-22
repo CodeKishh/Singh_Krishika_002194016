@@ -60,7 +60,12 @@ public class UserAccountDirectory {
     
     }
     
-    //updateuserAccount -- pending
+    public void updateUserAccount(UserAccount user,String name,String username, String password){
+       
+        user.setName(name);
+        user.setUsername(username);
+        user.setPassword(password);
+    }
     
     
 }

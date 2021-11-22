@@ -37,8 +37,8 @@ public class MainJFrame extends javax.swing.JFrame {
         initComponents();
         
         
-//       system = dB4OUtil.retrieveSystem();
-system = ConfigureASystem.configure();
+     system = dB4OUtil.retrieveSystem();
+//system = ConfigureASystem.configure();
 //        System.out.println(system);  
         this.setSize(1680, 1050);
     }
@@ -65,6 +65,10 @@ system = ConfigureASystem.configure();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        loginJButton.setBackground(new java.awt.Color(102, 153, 255));
+        loginJButton.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         loginJButton.setText("Login");
         loginJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -120,11 +124,12 @@ system = ConfigureASystem.configure();
                 .addComponent(logoutJButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(loginJLabel)
-                .addContainerGap(267, Short.MAX_VALUE))
+                .addContainerGap(194, Short.MAX_VALUE))
         );
 
         jSplitPane1.setLeftComponent(jPanel1);
 
+        container.setBackground(new java.awt.Color(204, 255, 255));
         container.setLayout(new java.awt.CardLayout());
         jSplitPane1.setRightComponent(container);
 
