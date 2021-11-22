@@ -22,13 +22,13 @@ public class EcoSystem extends Organization{
     private static EcoSystem business;
     private RestaurantDirectory restaurantDirectory;
     private CustomerDirectory customerDirectory;
-    private DeliveryManDirectory deliveryManDirectory;
+    private DeliveryManDirectory deliveryMenDirectory;
 
-    public EcoSystem(RestaurantDirectory restaurantDirectory, CustomerDirectory customerDirectory, DeliveryManDirectory deliveryManDirectory) {
+    public EcoSystem(RestaurantDirectory restaurantDirectory, CustomerDirectory customerDirectory, DeliveryManDirectory deliveryMenDirectory) {
 
         this.restaurantDirectory = restaurantDirectory;
         this.customerDirectory = customerDirectory;
-        this.deliveryManDirectory = deliveryManDirectory;
+        this.deliveryMenDirectory = deliveryMenDirectory;
     }
     
     public static EcoSystem getInstance(){
@@ -37,6 +37,47 @@ public class EcoSystem extends Organization{
         }
         return business;
     }
+    
+    
+    
+    
+    public CustomerDirectory getCustomerDirectory() {
+        if(customerDirectory == null)
+        {
+            customerDirectory = new CustomerDirectory();
+        }
+        return customerDirectory;
+    }
+
+    public void setCustomerDirectory(CustomerDirectory customerDirectory) {
+        this.customerDirectory = customerDirectory;
+    }
+
+    public DeliveryManDirectory getDeliveryManDirectory() {
+        if(deliveryMenDirectory == null)
+        {
+            deliveryMenDirectory = new DeliveryManDirectory();
+        }
+        return deliveryMenDirectory;
+    }
+
+    public void setDeliveryManDirectory(DeliveryManDirectory deliveryManDirectory) {
+        this.deliveryMenDirectory = deliveryManDirectory;
+    }
+    
+
+    public RestaurantDirectory getRestaurantDirectory() {
+        if(restaurantDirectory == null)
+        {
+            restaurantDirectory = new RestaurantDirectory();
+        }
+        return restaurantDirectory;
+    }
+
+    public void setRestaurantDirectory(RestaurantDirectory restaurantDirectory) {
+        this.restaurantDirectory = restaurantDirectory;
+    }
+
     
     @Override
     public ArrayList<Role> getSupportedRole() {

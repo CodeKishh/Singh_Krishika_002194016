@@ -18,7 +18,18 @@ public class UserAccount {
     private String password;
     private Employee employee;
     private Role role;
+    private String phone;
     private WorkQueue workQueue;
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+    
+    
 
     public UserAccount() {
         workQueue = new WorkQueue();

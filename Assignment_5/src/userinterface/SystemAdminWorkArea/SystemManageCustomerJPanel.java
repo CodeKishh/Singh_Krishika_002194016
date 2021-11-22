@@ -5,8 +5,12 @@
  */
 package userinterface.SystemAdminWorkArea;
 
+import Business.Customer.Customer;
 import Business.EcoSystem;
+import Business.Role.CustomerRole;
 import Business.UserAccount.UserAccount;
+import java.awt.CardLayout;
+import java.awt.Component;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -46,41 +50,113 @@ public class SystemManageCustomerJPanel extends javax.swing.JPanel {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         tblCus = new javax.swing.JTable();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        viewTable = new javax.swing.JTable();
+        btnBack = new javax.swing.JButton();
+        btnAdd = new javax.swing.JButton();
+        lblPassword = new javax.swing.JLabel();
+        lblUserName = new javax.swing.JLabel();
+        lblName1 = new javax.swing.JLabel();
+        lblPhone = new javax.swing.JLabel();
+        txtPhone = new javax.swing.JTextField();
+        txtUN = new javax.swing.JTextField();
+        txtPass = new javax.swing.JTextField();
+        txtName = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tblCus.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
-            },
-            new String [] {
-                "UserName", "Password"
-            }
-        ));
-        jScrollPane1.setViewportView(tblCus);
-
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 410, 90));
-
-        viewTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+                {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "UserName", "Password", "Name", "Phone"
             }
         ));
-        jScrollPane2.setViewportView(viewTable);
+        jScrollPane1.setViewportView(tblCus);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 690, 90));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 690, 110));
+
+        btnBack.setText("GO BACK");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 10, -1, -1));
+
+        btnAdd.setText("ADD NEW CUSTOMER");
+        btnAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddActionPerformed(evt);
+            }
+        });
+        add(btnAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 270, -1, -1));
+
+        lblPassword.setText("PASSWORD");
+        add(lblPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 180, 70, 20));
+
+        lblUserName.setText("USER NAME");
+        add(lblUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 70, 20));
+
+        lblName1.setText("NAME");
+        add(lblName1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 180, 40, 20));
+
+        lblPhone.setText("PHONE NUMBER");
+        add(lblPhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 180, -1, -1));
+        add(txtPhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 220, 140, -1));
+
+        txtUN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtUNActionPerformed(evt);
+            }
+        });
+        add(txtUN, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 140, -1));
+        add(txtPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 220, 140, -1));
+        add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 220, 140, -1));
+
+        jButton1.setText("DELETE");
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 270, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+
+userProcessContainer.remove(this);
+Component[] componentArray = userProcessContainer.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        SystemAdminWorkAreaJPanel sysAdminwjp = (SystemAdminWorkAreaJPanel) component;
+        sysAdminwjp.populateTree();
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBackActionPerformed
+
+    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+        // TODO add your handling code here:
+        
+        
+        String uNM = txtUN.getText();
+        String pss = txtPass.getText();
+        String nm = txtName.getName();
+//        String phone = txtPhone.getName();
+        
+        UserAccount ua = system.getUserAccountDirectory().createUserAccount(uNM, pss, nm, null, new CustomerRole());
+        Customer cust= system.getCustomerDirectory().addCustomer(uNM);
+        populateNetworkTable();
+        txtUN.setText("");
+        txtPass.setText("");
+        txtName.setText("");
+//        txtPhone.setText("");
+        
+    }//GEN-LAST:event_btnAddActionPerformed
+
+    private void txtUNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUNActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtUNActionPerformed
 
     private void populateNetworkTable() {
         DefaultTableModel model = (DefaultTableModel) tblCus.getModel();
@@ -102,6 +178,8 @@ public class SystemManageCustomerJPanel extends javax.swing.JPanel {
         
     }
 
+    
+    
 //    private void viewTable(){
 //    
 //    
@@ -122,19 +200,27 @@ public class SystemManageCustomerJPanel extends javax.swing.JPanel {
 //                
 //                
 //                model.addRow(row);
-//            }
-//            
-//        }
-    
-    
-    
+//            }            
+//       }
+//    
+//    
+//    
 //    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAdd;
+    private javax.swing.JButton btnBack;
+    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lblName1;
+    private javax.swing.JLabel lblPassword;
+    private javax.swing.JLabel lblPhone;
+    private javax.swing.JLabel lblUserName;
     private javax.swing.JTable tblCus;
-    private javax.swing.JTable viewTable;
+    private javax.swing.JTextField txtName;
+    private javax.swing.JTextField txtPass;
+    private javax.swing.JTextField txtPhone;
+    private javax.swing.JTextField txtUN;
     // End of variables declaration//GEN-END:variables
 }
